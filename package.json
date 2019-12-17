@@ -1,0 +1,55 @@
+{
+    "name": "nixfmt-vscode",
+    "displayName": "nixfmt",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mariatsji/ormolu-vscode"
+    },
+    "icon": "images/icon.png",
+    "description": "VS Code extension for Nix code formatting based on nixfmt tool",
+    "engines": {
+        "vscode": "^1.39.2"
+    },
+    "categories": [
+        "Formatters"
+    ],
+    "activationEvents": [
+        "onLanguage:nix"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "nix"
+            }
+        ],
+        "configuration": {
+            "title": "Nixfmt",
+            "type": "object",
+            "properties": {
+                "nixfmt.path": {
+                    "type": "string",
+                    "default": "nixfmt",
+                    "description": "Path to the nixfmt executable."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "build": "tsc",
+        "package": "vsce package",
+        "publish": "vsce publish",
+        "postinstall": "node ./node_modules/vscode/bin/install && tsc"
+    },
+    "devDependencies": {
+        "@types/node": "*",
+        "typescript": "3.6.4",
+        "vsce": "^1.71.0",
+        "vscode": "^1.1.36"
+    },
+    "main": "./out/src/extension",
+    "author": "Brettm12345",
+    "publisher": "brettm12345",
+    "license": "MIT",
+    "private": false
+}
